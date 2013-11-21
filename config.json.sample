@@ -1,0 +1,20 @@
+{
+    "default_host": "http://www.portalinmobiliario.com",
+    "sizes": {
+        "small": {
+            "width": 768, "height": 1024
+        },
+        "normal": {
+            "width": 1024, "height": 768
+        },
+        "large": {
+            "width": 1220, "height": 800
+        }
+    },
+    "datasets": {
+        "portal": {
+            "home": "/",
+            "ficha-propiedad": "/Propiedades/Usada/Arriendo/Las-Condes/Departamento/La-Gloria-Santiago/1672080"
+        }
+    }
+}

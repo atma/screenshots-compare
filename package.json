@@ -1,0 +1,16 @@
+{
+  "name": "screenshots-compare",
+  "title": "Screenshots compare",
+  "description": "Headless websites testing with Phantom JS",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "gm": "~1.13.3",
+    "chalk": "~0.3.0",
+    "underscore": "~1.5.2",
+    "async": "~0.2.9",
+    "optimist": "~0.6.0",
+    "wrench": "~1.5.4"
+  },
+  "devDependencies": {}
+}
