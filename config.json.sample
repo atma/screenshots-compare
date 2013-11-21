@@ -1,6 +1,9 @@
 {
     "default_host": "http://www.portalinmobiliario.com",
     "sizes": {
+        "tiny": {
+            "width": 320, "height": 480
+        },
         "small": {
             "width": 768, "height": 1024
         },

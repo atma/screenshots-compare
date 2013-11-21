@@ -20,6 +20,8 @@ var logInfo = chalk.bold.gray;
 
 var t = Date.now();
 var workingHost = argv.host || config.default_host;
+var customViewport = argv.viewport;
+
 if(workingHost.indexOf('http') !== 0) {
     workingHost = 'http://' + workingHost;
 }
@@ -36,6 +38,10 @@ async.each(items, saveReferenceImage, function(err) {
 });
 
 function saveReferenceImage(item, callback) {
+    if(customViewport && item.viewport.name !== customViewport) {
+        return callback(null);
+    }
+
     var spawn = require('child_process').spawn,
         cmd    = spawn('phantomjs', [
             'render_page.js',
