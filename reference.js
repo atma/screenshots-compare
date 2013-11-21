@@ -20,6 +20,12 @@ var logInfo = chalk.bold.gray;
 
 var t = Date.now();
 var workingHost = argv.host || config.default_host;
+if(workingHost.indexOf('http') !== 0) {
+    workingHost = 'http://' + workingHost;
+}
+if(workingHost[workingHost.length-1] === '/') {
+    workingHost = workingHost.substring(0, workingHost.length - 1);
+}
 
 async.each(items, saveReferenceImage, function(err) {
     if (err) {

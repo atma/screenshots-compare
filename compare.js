@@ -28,6 +28,13 @@ var workingHost = argv.host || config.default_host;
 var customImage = argv.image;
 var customViewport = argv.viewport;
 
+if(workingHost.indexOf('http') !== 0) {
+    workingHost = 'http://' + workingHost;
+}
+if(workingHost[workingHost.length-1] === '/') {
+    workingHost = workingHost.substring(0, workingHost.length - 1);
+}
+
 async.eachSeries(items, CompareImage, function(err) {
     if (err) {
         console.log(logError(err.message));
