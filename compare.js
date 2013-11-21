@@ -27,6 +27,7 @@ var t = startDate.getTime();
 var workingHost = argv.host || config.default_host;
 var customImage = argv.image;
 var customViewport = argv.viewport;
+var diffColor = argv.color || 'red';
 
 if(workingHost.indexOf('http') !== 0) {
     workingHost = 'http://' + workingHost;
@@ -76,7 +77,7 @@ function CompareImage(item, callback) {
             wrench.mkdirSyncRecursive(out_dir, 0777);
         }
         var gm_options = {
-            highlightColor: 'red',
+            highlightColor: diffColor,
             file:  out_dir + item.name + '-' + item.viewport.name + '.png'
         };
         gm.compare(ref_img, res_img, gm_options, function (err) {

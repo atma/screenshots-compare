@@ -31,3 +31,6 @@ Generate comparison results for specific image using custom domain and viewport 
 
     node compare.js --host www.google.com --image home --viewport large
 
+Generate comparison results with a custom diff color, default is `red`.
+
+    node compare.js --host www.google.com --color green
