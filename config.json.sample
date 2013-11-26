@@ -17,7 +17,10 @@
     "datasets": {
         "portal": {
             "home": "/",
-            "ficha-propiedad": "/Propiedades/Usada/Arriendo/Las-Condes/Departamento/La-Gloria-Santiago/1672080"
+            "ficha-propiedad": {
+                "reference": "/this-page",
+                "compare": "/another-page"
+            }
         }
     }
 }

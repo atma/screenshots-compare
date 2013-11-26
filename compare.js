@@ -8,11 +8,13 @@ var fs = require('fs');
 
 var datasetName = argv.dataset,
     items = [];
+
+var parseDataset = require('./lib/dataset').parseDataset;
 if(datasetName && config.datasets[datasetName]) {
-    parseDataset(config.datasets[datasetName], datasetName);
+    items = parseDataset(config.datasets[datasetName], datasetName);
 } else {
     _.each(config.datasets, function(s, datasetName) {
-        parseDataset(s, datasetName);
+        items.concat(parseDataset(s, datasetName));
     });
 }
 
@@ -59,7 +61,7 @@ function CompareImage(item, callback) {
     var spawn = require('child_process').spawn,
         cmd    = spawn('phantomjs', [
             'render_page.js',
-            '--url=' + workingHost + item.uri,
+            '--url=' + workingHost + item.uri.reference,
             '--out=' + (res_img),
             '--width=' + item.viewport.size.width,
             '--height=' + item.viewport.size.height
@@ -83,19 +85,6 @@ function CompareImage(item, callback) {
         gm.compare(ref_img, res_img, gm_options, function (err) {
             callback(err);
         });
-    });
-}
-
-function parseDataset(dataset_items, dataset_name) {
-    _.each(dataset_items, function(uri, name) {
-        _.each(config.sizes, function(size, sizeName) {
-            items.push({
-                name: name,
-                uri: uri,
-                viewport: {name: sizeName, size: size},
-                dataset: dataset_name
-            });
-        })
     });
 }
 

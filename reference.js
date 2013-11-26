@@ -5,11 +5,13 @@ var argv = require('optimist').argv;
 
 var datasetName = argv.dataset,
     items = [];
+
+var parseDataset = require('./lib/dataset').parseDataset;
 if(datasetName && config.datasets[datasetName]) {
-    parseDataset(config.datasets[datasetName], datasetName);
+    items = parseDataset(config.datasets[datasetName], datasetName);
 } else {
     _.each(config.datasets, function(s, datasetName) {
-        parseDataset(s, datasetName);
+        items.concat(parseDataset(s, datasetName));
     });
 }
 
@@ -45,7 +47,7 @@ function saveReferenceImage(item, callback) {
     var spawn = require('child_process').spawn,
         cmd    = spawn('phantomjs', [
             'render_page.js',
-            '--url=' + workingHost + item.uri,
+            '--url=' + workingHost + item.uri.compare,
             '--out=' + ('images/reference/'+ item.dataset +'/' +item.name + '-' + item.viewport.name + '.png'),
             '--width=' + item.viewport.size.width,
             '--height=' + item.viewport.size.height
@@ -59,18 +61,5 @@ function saveReferenceImage(item, callback) {
     });
     cmd.on('close', function (code) {
         callback(null);
-    });
-}
-
-function parseDataset(dataset_items, dataset_name) {
-    _.each(dataset_items, function(uri, name) {
-        _.each(config.sizes, function(size, sizeName) {
-            items.push({
-                name: name,
-                uri: uri,
-                viewport: {name: sizeName, size: size},
-                dataset: dataset_name
-            });
-        })
     });
 }
