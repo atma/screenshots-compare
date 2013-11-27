@@ -27,6 +27,7 @@ page.viewportSize = {
     width: params.width,
     height: params.height
 };
+page.settings.userAgent = "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.57 Safari/537.36";
 
 page.open(params.url, function (status) {
     if (status !== 'success') {

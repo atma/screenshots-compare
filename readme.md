@@ -27,9 +27,9 @@ Generate comparison results for specific dataset using custom domain.
 
     node compare.js --dataset google --host www.google.com
 
-Generate comparison results for specific image using custom domain and viewport size. Viewport size can be configured in `config.json`.
+Generate comparison results for specific page using custom domain and viewport size. Viewport size can be configured in `config.json`.
 
-    node compare.js --host www.google.com --image home --viewport large
+    node compare.js --host www.google.com --page home --viewport large
 
 Generate comparison results with a custom diff color, default is `red`.
 

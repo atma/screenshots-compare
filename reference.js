@@ -31,7 +31,7 @@ if(workingHost[workingHost.length-1] === '/') {
     workingHost = workingHost.substring(0, workingHost.length - 1);
 }
 
-async.each(items, saveReferenceImage, function(err) {
+async.eachSeries(items, saveReferenceImage, function(err) {
     if (err) {
         console.log(logError(err.message));
     } else {

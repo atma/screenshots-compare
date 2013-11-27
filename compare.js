@@ -27,7 +27,7 @@ var startDate = new Date();
 var t = startDate.getTime();
 
 var workingHost = argv.host || config.default_host;
-var customImage = argv.image;
+var customPage = argv.page;
 var customViewport = argv.viewport;
 var diffColor = argv.color || 'red';
 
@@ -48,7 +48,7 @@ async.eachSeries(items, CompareImage, function(err) {
 });
 
 function CompareImage(item, callback) {
-    if(customImage && item.name !== customImage) {
+    if(customPage && item.name !== customPage) {
         return callback(null);
     }
     if(customViewport && item.viewport.name !== customViewport) {
